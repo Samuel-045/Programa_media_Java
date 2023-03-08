@@ -12,7 +12,7 @@ public class InterfaceGrafica extends JPanel{ //herança sobre a classe jpanel pa
 	ImageIcon logo;
 	JLabel iblogo;
 	Color mygreen = new Color(0,102,0) , 
-		  myyellow = new Color(204,204,0),
+		  myyellow = new Color(204,104,0),
 		  myred = new Color(204,0,0);
 
 public InterfaceGrafica(){
@@ -25,10 +25,10 @@ public void InicializarComponentes(){
 	 
 	logo = new ImageIcon("C:\\Users\\Ana Paula\\eclipse-workspace\\terceirosemestre\\src\\projectMedia\\logo_ceap21.png");
 	iblogo=new JLabel(logo);
-	iblogo.setBounds(390,5, 180, 98);
+	iblogo.setBounds(380,5, 180, 98);
 	add(iblogo);
 	
-	mensagem1 = new JLabel("Resultado...");
+	mensagem1 = new JLabel("");
 	mensagem1.setBounds(30, 140,500,40);
 	add(mensagem1);
 	
@@ -41,7 +41,7 @@ public void InicializarComponentes(){
 	 add(nome);
 	
 	 pdturma=new JLabel("Turma:"); //indicador p turma
-	 pdturma.setBounds(10, 60, 50,30);
+	 pdturma.setBounds(8, 60, 50,30);
 	 add(pdturma);
 		
 	 turma=new JTextField();
@@ -49,7 +49,7 @@ public void InicializarComponentes(){
 	 add(turma);
      
 	 p1=new JLabel("P1:"); //indicador p p1
-	 p1.setBounds(25, 100, 150, 30);
+	 p1.setBounds(26, 100, 150, 30);
 	 add(p1);
 	 
 	 nota1=new JTextField();
@@ -57,7 +57,7 @@ public void InicializarComponentes(){
 	 add(nota1);
 	 
 	 p2=new JLabel("P2:"); //indicador p p2
-	 p2.setBounds(210, 100, 150, 30);
+	 p2.setBounds(208, 100, 150, 30);
 	 add(p2);
 	 
 	 nota2=new JTextField();
@@ -65,7 +65,7 @@ public void InicializarComponentes(){
 	 add(nota2);
 	 
 	 p3=new JLabel("P3:"); //indicador p p3
-	 p3.setBounds(390, 100, 150, 30);
+	 p3.setBounds(388, 100, 150, 30);
 	 add(p3);
 	 
 	 nota3=new JTextField();
@@ -94,13 +94,13 @@ public void DefinirEventos(){
 			        	 String nome11 = nome.getText();
 			        	 			
 			    if(media>6) {
-				 mensagem1.setText("Olá "+nome11+" do "+turma11+". Sua média é "+media+" Você passou :) ");
-				 mensagem1.setForeground(mygreen);
+			    	mensagem1.setText(String.format("Olá %s do %s. Sua média é %.1f+. Você passou :) ",nome11, turma11, media));
+				    mensagem1.setForeground(mygreen);
 			    } else if (media<4) {
-			    	mensagem1.setText("Olá "+nome11+" do "+turma11+". Sua média é "+media+". Você repetiu :(");
+			    	mensagem1.setText(String.format("Olá %s do %s. Sua média é %.1f+. Você repetiu :( ",nome11, turma11, media));
 			    	mensagem1.setForeground(myred);
 			    }else {
-			    	mensagem1.setText("Olá "+nome11+" do "+turma11+". Sua média é "+media+". Você está de recuperação :/");
+			    	mensagem1.setText(String.format("Olá %s do %s. Sua média é %.1f+. Você está de recuperação :/ ",nome11, turma11, media));
 			    	mensagem1.setForeground(myyellow);
 			    }
 				 
@@ -115,7 +115,8 @@ public void DefinirEventos(){
 		 JFrame frame = new JFrame("Cálculo da média"); //declara a classe para criar uma janela
 		 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);//método para fechar a janela
 		 frame.getContentPane().add(new InterfaceGrafica()); //adiciona o construtor na janela
-		 frame.setBounds(400,250,600,300);// define tamanho e posição da janela
+		 frame.setBounds(400,250,590,300);// define tamanho e posição da janela
+		 frame.revalidate();
 		 frame.setVisible(true);//define se a janela irá ser visivel ou não
 	}
 	
